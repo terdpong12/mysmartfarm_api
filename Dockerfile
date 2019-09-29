@@ -1,8 +1,8 @@
 FROM golang:1.12.7
 
 # add the source
-COPY . /go/src/mysmartfarm_api
-WORKDIR /go/src/mysmartfarm_api/
+COPY . /go/src/github.com/MySmartFarm/mysmartfarm_api
+WORKDIR /go/src/github.com/MySmartFarm/mysmartfarm_api/
 
 # Install go dependencies
 RUN go get github.com/gin-gonic/gin && \
