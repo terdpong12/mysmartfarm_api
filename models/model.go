@@ -1,7 +1,7 @@
 package models
 
 import (
-	"api_get_products/db"
+	"github.com/MySmartFarm/mysmartfarm_api/db"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/lib/pq"
