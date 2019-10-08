@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/MySmartFarm/mysmartfarm_api/
 RUN go get github.com/gin-gonic/gin && \
     go get github.com/lib/pq && \
     go get github.com/jinzhu/gorm && \
-    go get github.com/influxdata/influxdb1-client/v2 && \
+    go get github.com/influxdata/influxdb1-client && \
     go get github.com/cbrake/influxdbhelper && \
     go get github.com/fatih/structs && \
     go get github.com/dgrijalva/jwt-go
