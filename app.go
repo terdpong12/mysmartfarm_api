@@ -7,7 +7,6 @@ import (
 	"github.com/MySmartFarm/mysmartfarm_api/database"
 	"github.com/MySmartFarm/mysmartfarm_api/functions"
 	"github.com/gin-gonic/gin"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 func main() {
