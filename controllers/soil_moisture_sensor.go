@@ -125,6 +125,16 @@ func SoilMoistureSensorCreate(c *gin.Context) {
 
 	seriseName := "soil_moisture_sensor"
 	soilMoistureSensor.Time = time.Now()
+	soilMoistureSensor.MoistureValue = 1025 - soilMoistureSensor.MoistureValue
+	if soilMoistureSensor.MoistureValue < 100 {
+		soilMoistureSensor.StatusAlert = 1
+	} else if soilMoistureSensor.MoistureValue < 200 {
+		soilMoistureSensor.StatusAlert = 2
+	} else if soilMoistureSensor.MoistureValue > 700 {
+		soilMoistureSensor.StatusAlert = 4
+	} else {
+		soilMoistureSensor.StatusAlert = 3
+	}
 
 	// Create a point and add to batch
 	tags := map[string]string{"sensor_id": fmt.Sprint(soilMoistureSensor.SensorId)}
