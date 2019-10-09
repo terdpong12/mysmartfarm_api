@@ -16,6 +16,7 @@ func main() {
 	database.CreateDatabase()
 	r := gin.Default()
 	r.GET("/getHello/", controllers.GetHello)
+	r.GET("/getENV/", controllers.GetENV)
 	r.GET("/sensor/soil_moisture", controllers.SoilMoistureSensorGetAll)
 	r.GET("/sensor/soil_moisture/:id", controllers.SoilMoistureSensorGet)
 	r.POST("/sensor/soil_moisture", controllers.SoilMoistureSensorCreate)
