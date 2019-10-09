@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/MySmartFarm/mysmartfarm_api/constants"
+	"github.com/MySmartFarm/mysmartfarm_api/functions"
 	client "github.com/influxdata/influxdb1-client/v2"
 )
 
@@ -95,6 +96,7 @@ func influxDBClient() client.Client {
 		Password: password,
 	})
 	if err != nil {
+		functions.NotifyToLine(fmt.Sprint(err))
 		log.Fatalln("Error: ", err)
 	}
 	return c
