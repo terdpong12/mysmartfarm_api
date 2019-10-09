@@ -25,12 +25,14 @@ func GetENV(c *gin.Context) {
 	}
 	type EnvShow struct {
 		MSFEnvironmentModeKey string `json:"MSFEnvironmentModeKey"`
+		InfluxdbURL           string `json:"InfluxdbURL"`
 		InfluxdbUsername      string `json:"InfluxdbUsername"`
 		InfluxdbPassword      string `json:"InfluxdbPassword"`
 		NotifyLineToken       string `json:"NotifyLineToken"`
 	}
 	envShow := EnvShow{}
 	envShow.MSFEnvironmentModeKey = os.Getenv(constants.MSFEnvironmentModeKey)
+	envShow.InfluxdbURL = os.Getenv(constants.InfluxdbURL)
 	envShow.InfluxdbUsername = os.Getenv(constants.InfluxdbUsername)
 	envShow.InfluxdbPassword = os.Getenv(constants.InfluxdbPassword)
 	envShow.NotifyLineToken = os.Getenv(constants.NotifyLineToken)
