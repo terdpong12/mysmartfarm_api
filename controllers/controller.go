@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/MySmartFarm/mysmartfarm_api/constants"
+	"github.com/MySmartFarm/mysmartfarm_api/functions"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,6 +18,11 @@ func GetHello(c *gin.Context) {
 }
 
 func GetENV(c *gin.Context) {
+	status, valid := functions.IsAuthorized(c.Request.Header, true)
+	if status != "Success" && !valid {
+		c.JSON(401, status)
+		return
+	}
 	type EnvShow struct {
 		MSFEnvironmentModeKey string `json:"MSFEnvironmentModeKey"`
 		InfluxdbUsername      string `json:"InfluxdbUsername"`
@@ -28,5 +34,5 @@ func GetENV(c *gin.Context) {
 	envShow.InfluxdbUsername = os.Getenv(constants.InfluxdbUsername)
 	envShow.InfluxdbPassword = os.Getenv(constants.InfluxdbPassword)
 	envShow.NotifyLineToken = os.Getenv(constants.NotifyLineToken)
-	c.JSON(http.StatusOK, envShow)
+	c.JSON(200, envShow)
 }

@@ -16,7 +16,6 @@ import (
 
 func SoilMoistureSensorGet(c *gin.Context) {
 	status, valid := functions.IsAuthorized(c.Request.Header, true)
-
 	if status != "Success" && !valid {
 		c.JSON(401, status)
 		return
