@@ -11,6 +11,7 @@ import (
 )
 
 // MyDB specifies name of database
+var URL = "http://localhost:8086"
 var MyDB = "mysmartfarm"
 var username = "admin"
 var password = "secret"
@@ -72,13 +73,15 @@ func GetAddr() string {
 	mode := os.Getenv(constants.MSFEnvironmentModeKey)
 	switch mode {
 	case "Local":
+		URL = os.Getenv(constants.InfluxdbURL)
 		username = os.Getenv(constants.InfluxdbUsername)
 		password = os.Getenv(constants.InfluxdbPassword)
-		return "http://localhost:8086"
+		return URL
 	case "Prod":
+		URL = os.Getenv(constants.InfluxdbURL)
 		username = os.Getenv(constants.InfluxdbUsername)
 		password = os.Getenv(constants.InfluxdbPassword)
-		return "http://influxdb:8086"
+		return URL
 	default:
 		os.Exit(1)
 	}
