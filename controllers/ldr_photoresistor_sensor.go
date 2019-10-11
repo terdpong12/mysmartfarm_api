@@ -137,8 +137,8 @@ func CreateLDRPhotoresistorSensor(c *gin.Context) {
 	// Create a point and add to batch
 	tags := map[string]string{"sensor_id": fmt.Sprint(LDRPhotoresistorSensor.SensorId)}
 	fields := map[string]interface{}{
-		"moisture_value": LDRPhotoresistorSensor.Value,
-		"status_alert":   LDRPhotoresistorSensor.StatusAlert,
+		"value":        LDRPhotoresistorSensor.Value,
+		"status_alert": LDRPhotoresistorSensor.StatusAlert,
 	}
 
 	database.Insert(constants.SeriesNameLDRPhotoresistor, tags, fields, LDRPhotoresistorSensor.Time)

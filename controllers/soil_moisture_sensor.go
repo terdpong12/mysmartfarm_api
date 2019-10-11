@@ -135,8 +135,8 @@ func CreateSoilMoistureSensor(c *gin.Context) {
 	// Create a point and add to batch
 	tags := map[string]string{"sensor_id": fmt.Sprint(soilMoistureSensor.SensorId)}
 	fields := map[string]interface{}{
-		"moisture_value": soilMoistureSensor.Value,
-		"status_alert":   soilMoistureSensor.StatusAlert,
+		"value":        soilMoistureSensor.Value,
+		"status_alert": soilMoistureSensor.StatusAlert,
 	}
 
 	database.Insert(constants.SeriesNameSoilMoistureSensor, tags, fields, soilMoistureSensor.Time)
