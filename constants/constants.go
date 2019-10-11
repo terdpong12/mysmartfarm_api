@@ -8,4 +8,7 @@ const (
 	InfluxdbPassword = "INFLUXDB_ADMIN_PASSWORD"
 
 	NotifyLineToken = "NOTIFY_LINE_TOKEN"
+
+	SeriesNameSoilMoistureSensor = "soil_moisture_sensor"
+	SeriesNameLDRPhotoresistor   = "ldr_photoresistor_sensor"
 )

@@ -17,9 +17,16 @@ func main() {
 	r := gin.Default()
 	r.GET("/getHello/", controllers.GetHello)
 	r.GET("/getENV/", controllers.GetENV)
-	r.GET("/sensor/soil_moisture", controllers.SoilMoistureSensorGetAll)
-	r.GET("/sensor/soil_moisture/:id", controllers.SoilMoistureSensorGet)
-	r.POST("/sensor/soil_moisture", controllers.SoilMoistureSensorCreate)
+
+	//Soil Moisture Sensor
+	r.GET("/sensor/soil_moisture", controllers.GetListSoilMoistureSensor)
+	r.GET("/sensor/soil_moisture/:id", controllers.GetSoilMoistureSensor)
+	r.POST("/sensor/soil_moisture", controllers.CreateSoilMoistureSensor)
+
+	//LDR Photoresistor Sensor
+	r.GET("/sensor/ldr_photoresistor", controllers.GetListLDRPhotoresistorSensor)
+	r.GET("/sensor/ldr_photoresistor/:id", controllers.GetLDRPhotoresistorSensor)
+	r.POST("/sensor/ldr_photoresistor", controllers.CreateLDRPhotoresistorSensor)
 
 	r.Run() //listen and serve on 0.0.0.0:8080
 }
