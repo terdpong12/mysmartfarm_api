@@ -29,7 +29,7 @@ func GetSoilMoistureSensor(c *gin.Context) {
 	}
 
 	query := `
-		SELECT * FROM ` + constants.SeriesNameSoilMoistureSensor + ` WHERE sensor_id = '%d'
+		SELECT * FROM ` + constants.SeriesNameSoilMoistureSensor + ` WHERE sensor_id = '%d' ORDER BY time DESC LIMIT 180
 	`
 	res, err := database.Query(fmt.Sprintf(query, ID))
 	if err != nil {
@@ -48,9 +48,9 @@ func GetSoilMoistureSensor(c *gin.Context) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		soilMoist.Value, _ = strconv.Atoi(string(row[1].(json.Number)))
-		soilMoist.SensorId, _ = strconv.Atoi(row[2].(string))
-		soilMoist.StatusAlert, _ = strconv.Atoi(string(row[3].(json.Number)))
+		soilMoist.SensorId, _ = strconv.Atoi(row[1].(string))
+		soilMoist.StatusAlert, _ = strconv.Atoi(string(row[2].(json.Number)))
+		soilMoist.Value, _ = strconv.Atoi(string(row[3].(json.Number)))
 		soilMoistureSensor = append(soilMoistureSensor, soilMoist)
 	}
 
@@ -90,9 +90,9 @@ func GetListSoilMoistureSensor(c *gin.Context) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		soilMoist.Value, _ = strconv.Atoi(string(row[1].(json.Number)))
-		soilMoist.SensorId, _ = strconv.Atoi(row[2].(string))
-		soilMoist.StatusAlert, _ = strconv.Atoi(string(row[3].(json.Number)))
+		soilMoist.SensorId, _ = strconv.Atoi(row[1].(string))
+		soilMoist.StatusAlert, _ = strconv.Atoi(string(row[2].(json.Number)))
+		soilMoist.Value, _ = strconv.Atoi(string(row[3].(json.Number)))
 
 		soilMoistureSensor = append(soilMoistureSensor, soilMoist)
 	}

@@ -29,7 +29,7 @@ func GetLDRPhotoresistorSensor(c *gin.Context) {
 	}
 
 	query := `
-		SELECT * FROM ` + constants.SeriesNameLDRPhotoresistor + ` WHERE sensor_id = '%d'
+		SELECT * FROM ` + constants.SeriesNameLDRPhotoresistor + ` WHERE sensor_id = '%d' ORDER BY time DESC LIMIT 180
 	`
 	res, err := database.Query(fmt.Sprintf(query, ID))
 	if err != nil {
@@ -48,9 +48,9 @@ func GetLDRPhotoresistorSensor(c *gin.Context) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		LDRPhoto.Value, _ = strconv.Atoi(string(row[1].(json.Number)))
-		LDRPhoto.SensorId, _ = strconv.Atoi(row[2].(string))
-		LDRPhoto.StatusAlert, _ = strconv.Atoi(string(row[3].(json.Number)))
+		LDRPhoto.SensorId, _ = strconv.Atoi(row[1].(string))
+		LDRPhoto.StatusAlert, _ = strconv.Atoi(string(row[2].(json.Number)))
+		LDRPhoto.Value, _ = strconv.Atoi(string(row[3].(json.Number)))
 		LDRPhotoresistorSensor = append(LDRPhotoresistorSensor, LDRPhoto)
 	}
 
